@@ -35,7 +35,7 @@ export default {
         }
     },
     created() {
-        this.url = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://parvacamer.github.io/portes-ouvertes-2022/user`;
+        this.url = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://portes-ouvertes-2022.netlify.app/user`;
     },
     async mounted() {
         const response = await fetch(`https://porte-ouverte-3be77-default-rtdb.europe-west1.firebasedatabase.app/activity.json`);

@@ -16,7 +16,7 @@ export default {
         }
     },
     async created() {
-        this.url = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://parvacamer.github.io/portes-ouvertes-2022/playanactivity/${this.nameActivity.name}`;
+        this.url = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://portes-ouvertes-2022.netlify.app/playanactivity/${this.nameActivity.name}`;
         this.$emit('emit-qrcode', this.url);
     }
 }

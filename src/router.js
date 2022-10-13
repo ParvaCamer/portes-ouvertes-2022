@@ -10,7 +10,7 @@ import NotFound from './components/NotFound.vue';
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', redirect: '/portes-ouvertes-2022/user' },
+        { path: '/', redirect: '/user' },
         { path: '/allactivities', component: Accueil },
         { path: '/createactivity', component: CreerActivite },
         { path: '/playanactivity', component: Jouer},
