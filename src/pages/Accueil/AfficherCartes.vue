@@ -68,7 +68,7 @@ export default {
     methods: {
         playActivity(value) {
             if (this.userIsAdmin) {
-                this.$router.push('/portes-ouvertes-2022/playanactivity/' + value);
+                this.$router.push('/playanactivity/' + value);
             } else {
                 this.showDialog = true;
                 this.titleDialog = 'Accès refusé';
