@@ -13,7 +13,7 @@
         </div>
         <div class="grid-play-card">
             <base-card class="card-play" v-for="cards in cardsArray" :key="cards.id">
-                <router-link class="router-qr-code" :to="`/portes-ouvertes-2022/playanactivity/${cards.id}`">
+                <router-link class="router-qr-code" :to="`/playanactivity/${cards.id}`">
                     <div class="div-card-play">
                         <h2>{{ cards.title }}</h2>
                         <h3>Scanne moi et accède au quizz</h3>
