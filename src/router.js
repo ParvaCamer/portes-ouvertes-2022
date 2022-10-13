@@ -8,16 +8,15 @@ import AfficherActivite from './pages/Jouer/AfficherActivite.vue';
 import NotFound from './components/NotFound.vue';
 
 const router = createRouter({
-    mode: 'history',
-    history: createWebHistory('/portes-ouvertes-2022/'),
+    history: createWebHistory(),
     routes: [
         { path: '/', redirect: '/portes-ouvertes-2022/user' },
-        { path: '/portes-ouvertes-2022/allactivities', component: Accueil },
-        { path: '/portes-ouvertes-2022/createactivity', component: CreerActivite },
-        { path: '/portes-ouvertes-2022/playanactivity', component: Jouer},
-        { path: '/portes-ouvertes-2022/playanactivity/:id', component: AfficherActivite, meta: { requiresAuth: true }},
-        { path: '/portes-ouvertes-2022/user', component: Utilisateur},
-        { path: '/portes-ouvertes-2022/:notFound(.*)', component: NotFound}
+        { path: '/allactivities', component: Accueil },
+        { path: '/createactivity', component: CreerActivite },
+        { path: '/playanactivity', component: Jouer},
+        { path: '/playanactivity/:id', component: AfficherActivite, meta: { requiresAuth: true }},
+        { path: '/user', component: Utilisateur},
+        { path: '/:notFound(.*)', component: NotFound}
     ]
 })
 
