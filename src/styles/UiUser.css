@@ -1,0 +1,121 @@
+.input-container {
+    height: 50px;
+    position: relative;
+    width: 100%;
+}
+
+.ic1,
+.user-title {
+    margin-top: 20px;
+}
+
+.ic2,
+.p-btn {
+    margin-top: 30px;
+}
+
+.input-user {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 60%;
+}
+
+.cut {
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 20px;
+    left: 110px;
+    position: absolute;
+    top: -20px;
+    transform: translateY(0);
+    transition: transform 200ms;
+    width: 85px;
+}
+
+@media screen and (max-width: 375px) {
+    .placeholder {
+        left: 90px !important;
+    }
+    .cut {
+        left: 90px !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .placeholder {
+        left: 80px !important;
+    }
+    .cut {
+        left: 80px !important;
+    }
+}
+
+.cut-short {
+    width: 50px;
+}
+
+.input-user:focus~.cut,
+.input-user:not(:placeholder-shown)~.cut {
+    transform: translateY(8px);
+}
+
+.placeholder {
+    color: #65657b;
+    font-family: sans-serif;
+    left: 110px;
+    line-height: 14px;
+    pointer-events: none;
+    position: absolute;
+    transform-origin: 0 50%;
+    transition: transform 200ms, color 200ms;
+    top: 20px;
+}
+
+.input-user:focus~.placeholder,
+.input-user:not(:placeholder-shown)~.placeholder {
+    transform: translateY(-30px) translateX(8px) scale(0.75);
+}
+
+.input-user:not(:placeholder-shown)~.placeholder {
+    color: #808097;
+}
+
+.input-user:focus~.placeholder,
+.p-error {
+    color: #CC0000;
+}
+
+.div-error {
+    width: 100%;
+    position: absolute;
+}
+
+.p-error {
+    display: block;
+    position: relative;
+}
+
+.btn-auth {
+    border-radius: 28px;
+    width: 38%;
+    height: 45px;
+    background: #494c6d;
+    border: 1px solid #323447;
+    color: #aeaeb6;
+}
+.btn-auth:hover,
+.btn-auth:active,
+.btn:hover,
+.btn:active,
+.bi.bi-google:hover,
+.bi.bi-google:active {
+    opacity: 0.9;
+    cursor: pointer;
+}
