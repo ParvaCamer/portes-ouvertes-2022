@@ -17,7 +17,7 @@
                         <div class="form-control">
                             <label class="label-activity" for="question">Réponses :</label>
                             <input class="input-activity" v-model.trim="newAnswer" type="text" id="propositions"
-                                name="propositions" size="25" maxlength="30" minlength="1" />
+                                name="propositions" size="25" maxlength="50" minlength="1" />
                         </div>
                         <div class="form-control">
                             <div class="form-control-answer">

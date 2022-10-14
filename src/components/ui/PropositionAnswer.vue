@@ -19,7 +19,7 @@ export default {
     background-color: #cc0000b7;
     border-color: #cc0000b7;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     transition: background-color 250ms ease-in;
 }
 

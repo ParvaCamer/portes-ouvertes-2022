@@ -134,7 +134,7 @@ img {
 }
 
 .div-ul-prop {
-    height: 300px;
+    height: 280px;
     display: flex;
     flex-direction: column;
     justify-content: center;
