@@ -7,7 +7,7 @@
             <div class="card-image">
                 <img :src="url" />
             </div>
-            <h3>{{ question }}</h3>
+            <h4>{{ question }}</h4>
             <div class="div-ul-prop">
                 <ul class="ul-prop" v-for="(proposition, value) in propositions" :key="proposition.id">
                     <proposition-answer class="proposition" @click="addType(value)" :type="proposition.mode">
@@ -107,7 +107,7 @@ h5 {
     opacity: 50%;
 }
 
-h3 {
+h4 {
     margin: 0;
 }
 

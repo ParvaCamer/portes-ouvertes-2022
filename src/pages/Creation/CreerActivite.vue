@@ -12,7 +12,7 @@
                         <div class="form-control">
                             <label class="label-activity" for="question">Question :</label>
                             <input class="input-activity" v-model.trim="activity.question" type="text" id="question"
-                                name="question" size="20" required maxlength="35" />
+                                name="question" size="20" required maxlength="80" />
                         </div>
                         <div class="form-control">
                             <label class="label-activity" for="question">Réponses :</label>
