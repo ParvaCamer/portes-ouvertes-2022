@@ -90,11 +90,12 @@ export default {
                 if (props[i].answer === "oui" && props[i].mode === "selected") {
                     console.log('un point en plus')
                     this.userToSend.points++;
-                } else {
+                } else if (props[i].answer === "non" && props[i].mode === "selected") {
                     this.userToSend.points--;
                     console.log('pas de point')
+                } else {
+                    console.log(this.userToSend.points)
                 }
-                console.log(this.userToSend.points)
             }
 
             let dataToSend = {
