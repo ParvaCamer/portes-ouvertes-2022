@@ -27,4 +27,10 @@ export default {
     transition: background-color 300ms ease-out;
     background-color: #cc0000;
 }
+
+@media screen and (max-width: 320px) {
+    .props {
+        font-size: 14px;
+    }
+}
 </style>

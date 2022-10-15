@@ -11,6 +11,11 @@
     justify-content: center;
     margin-top: 20px;
 }
+@media screen and (max-width: 320px) {
+    .div-input-submit {
+        margin-top: 10px !important;
+    }
+}
 
 .input-submit {
     cursor: pointer;

@@ -91,8 +91,10 @@ export default {
                     console.log('un point en plus')
                     this.userToSend.points++;
                 } else {
+                    this.userToSend.points--;
                     console.log('pas de point')
                 }
+                console.log(this.userToSend.points)
             }
 
             let dataToSend = {

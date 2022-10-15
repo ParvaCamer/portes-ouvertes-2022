@@ -2,7 +2,8 @@
     <base-card class="base-card-user">
         <div class="div-user">
             <h1>Bravo ! Tu es connecté(e) !</h1>
-            <h3>Tu peux maintenant commencer ton aventure ! Pars à la recherche du prochain QR code caché dans la caserne. Une fois trouvé, scanne le et réponds juste pour gagner des points !</h3>
+            <h3>Tu peux maintenant commencer ton aventure !</h3>
+            <h3>Les règles du jeu sont simples : trouve le QR code caché dans la caserne, scanne le et réponds au quizz. Mais attention ! Si tu réponds faux à la question, tu perdras un point. Prends ton temps avant de valider ta réponse.</h3>
         </div>
     </base-card>
 </template>
@@ -30,11 +31,27 @@
     .base-card-user {
         background-size: 100%;
     }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 17px;
+    }
 }
 
 @media screen and (max-width: 375px) {
     .base-card-user {
         background-size: 100%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 16px;
     }
 }
 </style>

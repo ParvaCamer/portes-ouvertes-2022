@@ -62,7 +62,8 @@ export default {
         setTimeout(() => {
             this.userLoggedIn = this.user.find(user => user.userId === this.userId)
             this.userIsAdmin = this.userLoggedIn.isAdmin;
-        }, 500);
+            console.log(this.userIsAdmin)
+        }, 1000);
 
     },
     methods: {

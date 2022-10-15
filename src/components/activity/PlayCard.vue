@@ -56,7 +56,7 @@ export default {
     }
 
     img {
-        width: 50% !important;
+        width: 75% !important;
     }
 }
 
@@ -66,7 +66,13 @@ export default {
     }
 
     img {
-        width: 60% !important;
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    h4 {
+        font-size: 14px;
     }
 }
 .play-card {
