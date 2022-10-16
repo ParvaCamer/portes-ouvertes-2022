@@ -100,6 +100,8 @@ export default {
                     this.userToSend.points--;
                     isChoose.push(props[i])
                     console.log('pas de point')
+                } else {
+                    console.log(this.userToSend.points)
                 }
             }
             if (isChoose.length > 0) {
