@@ -5,7 +5,7 @@ Projet écrit avec VueJs 3 / VueRouter / ApiRestful / Firebase / CSS 3
 ### De quoi ça parle ?
 Un projet effectué pour les portes ouvertes de la caserne des pompiers de Marcq-en-Barœul (à côté de Lille). L'idée était que les utilisateurs scannent le QR code de connexion à l'entrée de la caserne pour pouvoir se créer un compte. Puis de scanner les QR codes des questions se trouvant aux stands correspondant à l'intérieur de la caserne. J'ai voulu faire en sorte que l'organisateur puisse créer une nouvelle activité, puis la modifier ou la supprimer par la suite, tout ça sans me solliciter. En créant une activité, un QR code est généré automatiquement, liant ainsi la question avec ce QR code. L'activité fonctionne comme un quizz : on a une question et des propositions. Et si on répond juste, on gagne un point. L'application devait être responsive, vu que les personnes allaient utiliser leur téléphone pour scanner le QR code
 
-Quelques modifications ont été faite sur ce projet pour que vous puissiez avoir une meilleure expérience lors de son utilisation
+Quelques modifications ont été faites sur ce projet pour que vous puissiez avoir une meilleure expérience lors de son utilisation
 
 ### Lien en ligne du projet :
 - https://portes-ouvertes-2022.netlify.app
