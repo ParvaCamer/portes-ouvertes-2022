@@ -1,5 +1,5 @@
 <template>
-  <nav role="navigation" v-if="userIsAdmin">
+  <nav role="navigation">
     <div id="menuToggle">
       <input type="checkbox" />
       <span></span>

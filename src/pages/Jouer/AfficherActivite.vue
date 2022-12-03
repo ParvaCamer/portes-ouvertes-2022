@@ -10,6 +10,7 @@
             <activite-finie v-else>
             </activite-finie>
         </div>
+        <base-dialog :show="showDialog" :title="titleDialog" :error="errorDialog" @close="closeDialog"></base-dialog>
     </div>
 </template>
 
@@ -29,7 +30,10 @@ export default {
             userToSend: {},
 
             displayIsOver: false,
-            isLoading: false
+            isLoading: false,
+            showDialog: false,
+            titleDialog: '',
+            errorDialog: null,
         }
     },
     async mounted() {
@@ -85,33 +89,43 @@ export default {
             })
         },
         getCorrectAnswer() {
-            let props = this.card.propositions
+            let props = this.card.propositions;
+            let isChoose = [];
             for (let i = 0; i < props.length; i++) {
                 if (props[i].answer === "oui" && props[i].mode === "selected") {
                     console.log('un point en plus')
+                    isChoose.push(props[i])
                     this.userToSend.points++;
                 } else if (props[i].answer === "non" && props[i].mode === "selected") {
                     this.userToSend.points--;
+                    isChoose.push(props[i])
                     console.log('pas de point')
                 } else {
                     console.log(this.userToSend.points)
                 }
             }
-
-            let dataToSend = {
-                isAdmin: this.userToSend.isAdmin,
-                isDone: [...this.userToSend.isDone,
-                this.id],
-                points: this.userToSend.points,
-                userId: this.userToSend.userId
+            if (isChoose.length > 0) {
+                let dataToSend = {
+                    isAdmin: this.userToSend.isAdmin,
+                    isDone: [...this.userToSend.isDone, this.id],
+                    points: this.userToSend.points,
+                    userId: this.userToSend.userId
+                }
+                const activityIsHover = {
+                    method: 'PUT',
+                    body: JSON.stringify(dataToSend)
+                }
+                fetch(`https://porte-ouverte-3be77-default-rtdb.europe-west1.firebasedatabase.app/user/${this.userToSend.id} /.json`, activityIsHover)
+                this.displayIsOver = true;
+            } else {
+                this.showDialog = true;
+                this.titleDialog = 'Pas de propositions sélectionnées'
+                this.errorDialog = "Tu n'as pas choisi de réponse. Merci d'en choisir une"
             }
-            const activityIsHover = {
-                method: 'PUT',
-                body: JSON.stringify(dataToSend)
-            }
-            fetch(`https://porte-ouverte-3be77-default-rtdb.europe-west1.firebasedatabase.app/user/${this.userToSend.id}/.json`, activityIsHover)
-            this.displayIsOver = true;
-        }
+        },
+        closeDialog() {
+            this.showDialog = false;
+        },
     }
 }
 </script>
