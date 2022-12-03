@@ -41,8 +41,7 @@
           </svg>
           <router-link to="/user">Utilisateur</router-link>
         </li>
-        <div class="btn-connexion" @mouseenter="mouseEnter" @mouseleave="mouseLeave"
-          @click="handleSignOut">
+        <div class="btn-connexion" @mouseenter="mouseEnter" @mouseleave="mouseLeave" @click="handleSignOut">
           <button class="btn-user">Se déconnecter</button>
           <div class="padlock">
             <div class="lock" :class="rotation" :style="upLock"></div>

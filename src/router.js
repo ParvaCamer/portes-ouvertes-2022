@@ -13,10 +13,10 @@ const router = createRouter({
         { path: '/', redirect: '/user' },
         { path: '/allactivities', component: Accueil },
         { path: '/createactivity', component: CreerActivite },
-        { path: '/playanactivity', component: Jouer},
-        { path: '/playanactivity/:id', component: AfficherActivite, meta: { requiresAuth: true }},
-        { path: '/user', component: Utilisateur},
-        { path: '/:notFound(.*)', component: NotFound}
+        { path: '/playanactivity', component: Jouer },
+        { path: '/playanactivity/:id', component: AfficherActivite, meta: { requiresAuth: true } },
+        { path: '/user', component: Utilisateur },
+        { path: '/:notFound(.*)', component: NotFound }
     ]
 })
 
