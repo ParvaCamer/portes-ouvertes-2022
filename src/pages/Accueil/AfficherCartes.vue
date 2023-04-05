@@ -143,7 +143,7 @@ export default {
     opacity: 1;
     z-index: 1;
     position: relative;
-    top: -650px;
+    top: -500px;
     transition: overflow 0s, opacity 1.5s ease-out;
 }
 </style>
