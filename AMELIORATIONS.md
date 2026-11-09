@@ -13,29 +13,77 @@ La base accepte actuellement des lectures sans authentification. Tant que les r�
 sont ouvertes, tout le reste de cette liste est secondaire : la protection ne peut pas
 venir du code de l'application.
 
-À faire dans la console Firebase → Realtime Database → Règles :
+Les règles se publient dans la console Firebase → Realtime Database → onglet Règles.
+L'onglet contient un *Rules Playground* qui permet de simuler une lecture ou une écriture
+avec un uid donné : à utiliser avant de publier, pour éviter de se verrouiller dehors.
+En CLI, c'est un fichier `database.rules.json` à la racine, puis
+`firebase deploy --only database`.
+
+#### Prérequis : indexer `/user` par l'uid
+
+`registerUser()` fait un `POST /user.json` (`Creation.vue:62`, `Utilisateur.vue:93`), donc
+Firebase génère une clé aléatoire et l'uid n'est qu'un champ à l'intérieur de l'objet :
+
+```
+/user/-NxYz8abc...  →  { userId: "aBcD123...", isAdmin: false, points: 0, isDone: [...] }
+```
+
+Deux conséquences :
+
+- Les règles ne peuvent pas retrouver l'utilisateur courant. Il n'y a pas de requêtes dans
+  les règles RTDB : impossible d'exprimer « l'enfant dont le champ `userId` vaut `auth.uid` ».
+- Une lecture RTDB est tout ou rien sur le chemin demandé. Le code fait partout
+  `GET /user.json` puis `.find(u => u.userId === ...)` : dès que la lecture est restreinte
+  par utilisateur, cette requête est refusée en bloc.
+
+Il faut donc passer la clé à l'uid avant de pouvoir fermer quoi que ce soit :
+
+```diff
+- fetch(`${BASE_URL}/user.json`, { method: 'POST', body: JSON.stringify(value) })
++ fetch(`${BASE_URL}/user/${value.userId}.json`, { method: 'PUT', body: JSON.stringify(value) })
+```
+
+Les lectures deviennent `GET /user/${uid}.json`, un accès direct. Ça supprime au passage le
+`.find()` sur toute la liste et les N requêtes identiques du point 3.6.
+
+Les comptes déjà créés sont sous des push IDs et deviendront orphelins. Pour une application
+d'événement, le plus simple est de vider `/user` et de repartir propre.
+
+#### Les règles
 
 ```json
 {
   "rules": {
+    "admins": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": false
+      }
+    },
     "activity": {
       ".read": "auth != null",
-      ".write": "auth != null && root.child('user').child(auth.uid).child('isAdmin').val() === true"
+      ".write": "auth != null && root.child('admins').child(auth.uid).val() === true"
     },
     "user": {
       "$uid": {
         ".read": "auth != null && auth.uid === $uid",
-        ".write": "auth != null && auth.uid === $uid",
-        "isAdmin": { ".write": false }
+        ".write": "auth != null && auth.uid === $uid"
       }
     }
   }
 }
 ```
 
-Point important : `isAdmin` doit être en écriture interdite depuis le client, sinon
-n'importe qui peut se donner les droits administrateur sur son propre profil.
-Le flag se met à la main dans la console, ou via un *custom claim* Firebase Auth.
+Le flag administrateur est sorti de `/user` et placé dans un nœud `admins` que personne ne
+peut écrire depuis le client. La raison est un piège des règles RTDB : **une permission
+accordée à un niveau ne peut pas être révoquée plus bas, elle descend en cascade**. Mettre
+`"isAdmin": { ".write": false }` sous un `/user/$uid` déjà autorisé en écriture ne protège
+rien — l'utilisateur pourrait se donner les droits administrateur sur son propre profil.
+
+Tu te déclares administrateur à la main dans la console : nœud `admins`, clé = ton uid,
+valeur `true`. Le `".write": false` fait que même toi ne peux pas le modifier depuis
+l'application, seulement depuis la console. Le client lit `/admins/{uid}.json` pour savoir
+s'il affiche les boutons d'administration.
 
 ### 1.2 Envoyer le jeton d'authentification sur chaque requête
 
