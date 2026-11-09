@@ -10,6 +10,9 @@ Quelques modifications ont été faites sur ce projet pour que vous puissiez avo
 ### Lien en ligne du projet :
 - https://portes-ouvertes-2022.netlify.app
 
+### Améliorations prévues
+Les points à reprendre sur ce projet sont listés dans [AMELIORATIONS.md](AMELIORATIONS.md).
+
 ## English version
 
 This project is working with VueJs 3 / VueRouter / ApiRestful / Firebase / CSS 3
